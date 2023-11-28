@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Kerberos协议</title>
+    <link href="/2023/11/28/Kerberos/"/>
+    <url>/2023/11/28/Kerberos/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Kerberos协议"><a href="#Kerberos协议" class="headerlink" title="Kerberos协议"></a>Kerberos协议</h1><h2 id="一、协议概念"><a href="#一、协议概念" class="headerlink" title="一、协议概念"></a>一、协议概念</h2><h2 id="1、角色"><a href="#1、角色" class="headerlink" title="1、角色"></a>1、角色</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ad-note">kerberos协议中也存在三个角色，分别是<br>1. 客户端（client）：发送请求的一方<br>2. 服务端（Server）：接收请求的一方<br>3. 密钥分发中心（Key Distribution Center，KDC），而密钥分发中心一般又分为两部分，分别是：<br>    - AS（Authentication Server）：认证服务器，专门用来认证客户端的身份并发放客户用于访问 TGS 的 TGT（票据授予票据）<br>    - TGS（Ticket Granting Ticket）：票据授予服务器，用来发放整个认证过程以及客户端访问服务端时所需的服务授予票据（Ticket）<br></code></pre></td></tr></table></figure><h2 id="2、Kerberos认证流程"><a href="#2、Kerberos认证流程" class="headerlink" title="2、Kerberos认证流程"></a>2、Kerberos认证流程</h2><p><img src="/2023/11/28/Kerberos/v2-d765c03f50bae99c1bfe7625aa64fba3_720w.webp"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>网络安全</tag>
+      
+      <tag>域渗透</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
