@@ -5,20 +5,12 @@
   
   <entry>
     <title>intranetInformationGathering</title>
-    <link href="/2023/11/30/intranetInformationGathering/"/>
-    <url>/2023/11/30/intranetInformationGathering/</url>
+    <link href="/2023/11/30/intranetInformation/"/>
+    <url>/2023/11/30/intranetInformation/</url>
     
-    <content type="html"><![CDATA[<h1 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h1><h2 id="一、本机信息收集"><a href="#一、本机信息收集" class="headerlink" title="一、本机信息收集"></a>一、本机信息收集</h2><h2 id="二、域信息收集"><a href="#二、域信息收集" class="headerlink" title="二、域信息收集"></a>二、域信息收集</h2><h2 id="三、内网资源探测"><a href="#三、内网资源探测" class="headerlink" title="三、内网资源探测"></a>三、内网资源探测</h2><p><img src="/2023/11/30/intranetInformationGathering/ttt.webp"></p><h2 id="四、用户凭证收集"><a href="#四、用户凭证收集" class="headerlink" title="四、用户凭证收集"></a>四、用户凭证收集</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h1><h2 id="一、本机信息收集"><a href="#一、本机信息收集" class="headerlink" title="一、本机信息收集"></a>一、本机信息收集</h2><h2 id="二、域信息收集"><a href="#二、域信息收集" class="headerlink" title="二、域信息收集"></a>二、域信息收集</h2><h2 id="三、内网资源探测"><a href="#三、内网资源探测" class="headerlink" title="三、内网资源探测"></a>三、内网资源探测</h2><p><img src="/2023/11/30/intranetInformation/ttt.webp"></p><h2 id="四、用户凭证收集"><a href="#四、用户凭证收集" class="headerlink" title="四、用户凭证收集"></a>四、用户凭证收集</h2>]]></content>
     
     
-    
-    <tags>
-      
-      <tag>网络安全</tag>
-      
-      <tag>内网渗透</tag>
-      
-    </tags>
     
   </entry>
   
