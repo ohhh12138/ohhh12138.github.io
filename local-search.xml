@@ -4,11 +4,32 @@
   
   
   <entry>
-    <title>Kerberos协议</title>
-    <link href="/2023/11/29/Kerberos/"/>
-    <url>/2023/11/29/Kerberos/</url>
+    <title>内网信息收集</title>
+    <link href="/2023/11/30/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"/>
+    <url>/2023/11/30/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</url>
     
-    <content type="html"><![CDATA[<h1 id="Kerberos协议"><a href="#Kerberos协议" class="headerlink" title="Kerberos协议"></a>Kerberos协议</h1><h2 id="一、协议概念"><a href="#一、协议概念" class="headerlink" title="一、协议概念"></a>一、协议概念</h2><h3 id="1、角色"><a href="#1、角色" class="headerlink" title="1、角色"></a>1、角色</h3><blockquote><p>kerberos协议中也存在三个角色，分别是</p><ol><li>客户端（client）：发送请求的一方</li><li>服务端（Server）：接收请求的一方</li><li>密钥分发中心（Key Distribution Center，KDC），而密钥分发中心一般又分为两部分，分别是：<ul><li>AS（Authentication Server）：<strong>认证服务器</strong>，专门用来认证客户端的身份并发放客户用于访问 TGS 的 TGT（票据授予票据）</li><li>TGS（Ticket Granting Ticket）：<strong>票据授予服务器</strong>，用来发放整个认证过程以及户端访问服务端时所需的服务授予票据（Ticket）</li></ul></li></ol></blockquote><h3 id="2、Kerberos认证流程"><a href="#2、Kerberos认证流程" class="headerlink" title="2、Kerberos认证流程"></a>2、Kerberos认证流程</h3><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129094448.png"></p><blockquote><p>Kerberos认证步骤:</p><ol><li>客户端拿着身份信息去AS认证， 认证通过后AS返回票据许可票据（TGT)</li><li>客户端拿着TGT去票据认证服务器(TGS)请求服务许可，认证通过TGS返回服务许可票据（ST）</li><li>客户端使用服务许可（ST）访问域内服务器部署的服务</li></ol></blockquote><blockquote><p>简单来说：客户端去AS服务器请求（TGT），用（TGT）去TGS服务器换（ST），最终用（ST）访问服务</p></blockquote><p><img src="/2023/11/29/Kerberos/v2-d765c03f50bae99c1bfe7625aa64fba3_720w.webp"></p><h4 id="1-客户端去AS服务器请求（TGT）"><a href="#1-客户端去AS服务器请求（TGT）" class="headerlink" title="1.客户端去AS服务器请求（TGT）"></a>1.客户端去AS服务器请求（TGT）</h4><blockquote><p>用户发送身份信息，AS验证后返回（TGT）。用户拿到（TGT）后，用户使用自己的HASH进行解密,用包内的CT_SK加密后，形成新的（TGT）。后面发给TGS服务器的是重新封装的(TGT)票据</p></blockquote><blockquote><p>krbtgt是域中特殊的机器用户、CT_SK是密钥</p></blockquote><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129095532.png"></p><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129095847.png"></p><h4 id="2-用（TGT）去TGS服务器换（ST）"><a href="#2-用（TGT）去TGS服务器换（ST）" class="headerlink" title="2.用（TGT）去TGS服务器换（ST）"></a>2.用（TGT）去TGS服务器换（ST）</h4><blockquote><p>客户端使用重新封装的TGT，向TGS服务器请求ST。ST中上半部分使用CT_SK加密，客户端可以进行解密。</p></blockquote><blockquote><p>server hash是指目标服务器的hash，<strong>是客户端真正想要访问的服务器的hash</strong></p></blockquote><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129100734.png"></p><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129100813.png"></p><h4 id="3-用（ST）访问服务"><a href="#3-用（ST）访问服务" class="headerlink" title="3.用（ST）访问服务"></a>3.用（ST）访问服务</h4><blockquote><ol><li>客户端用CT_SK重新加密ST</li><li>发送的目标服务器，服务器用自己的hash值进行解密验证</li><li>判断是否可以访问访问</li></ol></blockquote><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129102015.png"></p><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129102130.png"></p><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129102143.png"></p><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129102202.png"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h1><h2 id="一、本机信息收集"><a href="#一、本机信息收集" class="headerlink" title="一、本机信息收集"></a>一、本机信息收集</h2><h2 id="二、内网资源探测"><a href="#二、内网资源探测" class="headerlink" title="二、内网资源探测"></a>二、内网资源探测</h2><h2 id="三、域内信息收集"><a href="#三、域内信息收集" class="headerlink" title="三、域内信息收集"></a>三、域内信息收集</h2><p><img src="/2023/11/30/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%5Cv2-d765c03f50bae99c1bfe7625aa64fba3_720w.webp"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>网络安全</tag>
+      
+      <tag>内网渗透</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Kerberos协议</title>
+    <link href="/2023/11/27/Kerberos/"/>
+    <url>/2023/11/27/Kerberos/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Kerberos协议"><a href="#Kerberos协议" class="headerlink" title="Kerberos协议"></a>Kerberos协议</h1><h2 id="一、协议概念"><a href="#一、协议概念" class="headerlink" title="一、协议概念"></a>一、协议概念</h2><h3 id="1、角色"><a href="#1、角色" class="headerlink" title="1、角色"></a>1、角色</h3><blockquote><p>kerberos协议中也存在三个角色，分别是</p><ol><li>客户端（client）：发送请求的一方</li><li>服务端（Server）：接收请求的一方</li><li>密钥分发中心（Key Distribution Center，KDC），而密钥分发中心一般又分为两部分，分别是：<ul><li>AS（Authentication Server）：<strong>认证服务器</strong>，专门用来认证客户端的身份并发放客户用于访问 TGS 的 TGT（票据授予票据）</li><li>TGS（Ticket Granting Ticket）：<strong>票据授予服务器</strong>，用来发放整个认证过程以及户端访问服务端时所需的服务授予票据（Ticket）</li></ul></li></ol></blockquote><h3 id="2、Kerberos认证流程"><a href="#2、Kerberos认证流程" class="headerlink" title="2、Kerberos认证流程"></a>2、Kerberos认证流程</h3><p><img src="/2023/11/27/Kerberos/Pasted%20image%2020231129094448.png"></p><blockquote><p>Kerberos认证步骤:</p><ol><li>客户端拿着身份信息去AS认证， 认证通过后AS返回票据许可票据（TGT)</li><li>客户端拿着TGT去票据认证服务器(TGS)请求服务许可，认证通过TGS返回服务许可票据（ST）</li><li>客户端使用服务许可（ST）访问域内服务器部署的服务</li></ol></blockquote><blockquote><p>简单来说：客户端去AS服务器请求（TGT），用（TGT）去TGS服务器换（ST），最终用（ST）访问服务</p></blockquote><p><img src="/2023/11/27/Kerberos/v2-d765c03f50bae99c1bfe7625aa64fba3_720w.webp"></p><h4 id="1-客户端去AS服务器请求（TGT）"><a href="#1-客户端去AS服务器请求（TGT）" class="headerlink" title="1.客户端去AS服务器请求（TGT）"></a>1.客户端去AS服务器请求（TGT）</h4><blockquote><p>用户发送身份信息，AS验证后返回（TGT）。用户拿到（TGT）后，用户使用自己的HASH进行解密,用包内的CT_SK加密后，形成新的（TGT）。后面发给TGS服务器的是重新封装的(TGT)票据</p></blockquote><blockquote><p>krbtgt是域中特殊的机器用户、CT_SK是密钥</p></blockquote><p><img src="/2023/11/27/Kerberos/Pasted%20image%2020231129095532.png"></p><p><img src="/2023/11/27/Kerberos/Pasted%20image%2020231129095847.png"></p><h4 id="2-用（TGT）去TGS服务器换（ST）"><a href="#2-用（TGT）去TGS服务器换（ST）" class="headerlink" title="2.用（TGT）去TGS服务器换（ST）"></a>2.用（TGT）去TGS服务器换（ST）</h4><blockquote><p>客户端使用重新封装的TGT，向TGS服务器请求ST。ST中上半部分使用CT_SK加密，客户端可以进行解密。</p></blockquote><blockquote><p>server hash是指目标服务器的hash，<strong>是客户端真正想要访问的服务器的hash</strong></p></blockquote><p><img src="/2023/11/27/Kerberos/Pasted%20image%2020231129100734.png"></p><p><img src="/2023/11/27/Kerberos/Pasted%20image%2020231129100813.png"></p><h4 id="3-用（ST）访问服务"><a href="#3-用（ST）访问服务" class="headerlink" title="3.用（ST）访问服务"></a>3.用（ST）访问服务</h4><blockquote><ol><li>客户端用CT_SK重新加密ST</li><li>发送的目标服务器，服务器用自己的hash值进行解密验证</li><li>判断是否可以访问访问</li></ol></blockquote><p><img src="/2023/11/27/Kerberos/Pasted%20image%2020231129102015.png"></p><p><img src="/2023/11/27/Kerberos/Pasted%20image%2020231129102130.png"></p><p><img src="/2023/11/27/Kerberos/Pasted%20image%2020231129102143.png"></p><p><img src="/2023/11/27/Kerberos/Pasted%20image%2020231129102202.png"></p>]]></content>
     
     
     
