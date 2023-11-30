@@ -16,12 +16,12 @@
   <meta name="author" content="hhh12138">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Kerberos协议一、协议概念1、角色123456kerberos协议中也存在三个角色，分别是1. 客户端（client）：发送请求的一方2. 服务端（Server）：接收请求的一方3. 密钥分发中心（Key Distribution Center，KDC），而密钥分发中心一般又分为两部分，分别是：    - AS（Authentication Server）：**认证服务器**，专门用来认证客">
+    <meta name="description" content="Kerberos协议一、协议概念1、角色 kerberos协议中也存在三个角色，分别是  客户端（client）：发送请求的一方 服务端（Server）：接收请求的一方 密钥分发中心（Key Distribution Center，KDC），而密钥分发中心一般又分为两部分，分别是： AS（Authentication Server）：认证服务器，专门用来认证客户端的身份并发放客户用于访问 TGS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kerberos协议">
 <meta property="og:url" content="http://example.com/2023/11/29/Kerberos/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="Kerberos协议一、协议概念1、角色123456kerberos协议中也存在三个角色，分别是1. 客户端（client）：发送请求的一方2. 服务端（Server）：接收请求的一方3. 密钥分发中心（Key Distribution Center，KDC），而密钥分发中心一般又分为两部分，分别是：    - AS（Authentication Server）：**认证服务器**，专门用来认证客">
+<meta property="og:description" content="Kerberos协议一、协议概念1、角色 kerberos协议中也存在三个角色，分别是  客户端（client）：发送请求的一方 服务端（Server）：接收请求的一方 密钥分发中心（Key Distribution Center，KDC），而密钥分发中心一般又分为两部分，分别是： AS（Authentication Server）：认证服务器，专门用来认证客户端的身份并发放客户用于访问 TGS">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2023/11/29/Kerberos/Pasted%20image%2020231129094448.png">
 <meta property="og:image" content="http://example.com/2023/11/29/Kerberos/v2-d765c03f50bae99c1bfe7625aa64fba3_720w.webp">
@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/2023/11/29/Kerberos/Pasted%20image%2020231129102143.png">
 <meta property="og:image" content="http://example.com/2023/11/29/Kerberos/Pasted%20image%2020231129102202.png">
 <meta property="article:published_time" content="2023-11-29T02:34:02.392Z">
-<meta property="article:modified_time" content="2023-11-29T02:40:12.530Z">
+<meta property="article:modified_time" content="2023-11-30T07:04:27.492Z">
 <meta property="article:author" content="hhh12138">
 <meta property="article:tag" content="网络安全">
 <meta property="article:tag" content="域渗透">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          831 字
+          775 字
         
       </span>
     
@@ -285,21 +285,54 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Kerberos协议"><a href="#Kerberos协议" class="headerlink" title="Kerberos协议"></a>Kerberos协议</h1><h2 id="一、协议概念"><a href="#一、协议概念" class="headerlink" title="一、协议概念"></a>一、协议概念</h2><h3 id="1、角色"><a href="#1、角色" class="headerlink" title="1、角色"></a>1、角色</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ad-note">kerberos协议中也存在三个角色，分别是<br>1. 客户端（client）：发送请求的一方<br>2. 服务端（Server）：接收请求的一方<br>3. 密钥分发中心（Key Distribution Center，KDC），而密钥分发中心一般又分为两部分，分别是：<br>    - AS（Authentication Server）：**认证服务器**，专门用来认证客户端的身份并发放客户用于访问 TGS 的 TGT（票据授予票据）<br>    - TGS（Ticket Granting Ticket）：**票据授予服务器**，用来发放整个认证过程以及户端访问服务端时所需的服务授予票据（Ticket）<br></code></pre></td></tr></table></figure>
-
+                <h1 id="Kerberos协议"><a href="#Kerberos协议" class="headerlink" title="Kerberos协议"></a>Kerberos协议</h1><h2 id="一、协议概念"><a href="#一、协议概念" class="headerlink" title="一、协议概念"></a>一、协议概念</h2><h3 id="1、角色"><a href="#1、角色" class="headerlink" title="1、角色"></a>1、角色</h3><blockquote>
+<p>kerberos协议中也存在三个角色，分别是</p>
+<ol>
+<li>客户端（client）：发送请求的一方</li>
+<li>服务端（Server）：接收请求的一方</li>
+<li>密钥分发中心（Key Distribution Center，KDC），而密钥分发中心一般又分为两部分，分别是：<ul>
+<li>AS（Authentication Server）：<strong>认证服务器</strong>，专门用来认证客户端的身份并发放客户用于访问 TGS 的 TGT（票据授予票据）</li>
+<li>TGS（Ticket Granting Ticket）：<strong>票据授予服务器</strong>，用来发放整个认证过程以及户端访问服务端时所需的服务授予票据（Ticket）</li>
+</ul>
+</li>
+</ol>
+</blockquote>
 <h3 id="2、Kerberos认证流程"><a href="#2、Kerberos认证流程" class="headerlink" title="2、Kerberos认证流程"></a>2、Kerberos认证流程</h3><p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129094448.png" srcset="/img/loading.gif" lazyload></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ad-note">Kerberos认证步骤:<br><br>1. 客户端拿着身份信息去AS认证， 认证通过后AS返回票据许可票据（TGT)<br>2. 客户端拿着TGT去票据认证服务器(TGS)请求服务许可，认证通过TGS返回服务许可票据（ST）<br>3. 客户端使用服务许可（ST）访问域内服务器部署的服务<br><br>简单来说：客户端去AS服务器请求（TGT），用（TGT）去TGS服务器换（ST），最终用（ST）访问服务<br></code></pre></td></tr></table></figure>
-
+<blockquote>
+<p>Kerberos认证步骤:</p>
+<ol>
+<li>客户端拿着身份信息去AS认证， 认证通过后AS返回票据许可票据（TGT)</li>
+<li>客户端拿着TGT去票据认证服务器(TGS)请求服务许可，认证通过TGS返回服务许可票据（ST）</li>
+<li>客户端使用服务许可（ST）访问域内服务器部署的服务</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>简单来说：客户端去AS服务器请求（TGT），用（TGT）去TGS服务器换（ST），最终用（ST）访问服务</p>
+</blockquote>
 <p><img src="/2023/11/29/Kerberos/v2-d765c03f50bae99c1bfe7625aa64fba3_720w.webp" srcset="/img/loading.gif" lazyload></p>
-<h4 id="1-客户端去AS服务器请求（TGT）"><a href="#1-客户端去AS服务器请求（TGT）" class="headerlink" title="1.客户端去AS服务器请求（TGT）"></a>1.客户端去AS服务器请求（TGT）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ad-note"><br><br>用户发送身份信息，AS验证后返回（TGT）。用户拿到（TGT）后，用户使用自己的HASH进行解密,用包内的CT_SK加密后，形成新的（TGT）。后面发给TGS服务器的是重新封装的(TGT)票据<br><br>krbtgt是域中特殊的机器用户、CT_SK是密钥<br></code></pre></td></tr></table></figure>
-
+<h4 id="1-客户端去AS服务器请求（TGT）"><a href="#1-客户端去AS服务器请求（TGT）" class="headerlink" title="1.客户端去AS服务器请求（TGT）"></a>1.客户端去AS服务器请求（TGT）</h4><blockquote>
+<p>用户发送身份信息，AS验证后返回（TGT）。用户拿到（TGT）后，用户使用自己的HASH进行解密,用包内的CT_SK加密后，形成新的（TGT）。后面发给TGS服务器的是重新封装的(TGT)票据</p>
+</blockquote>
+<blockquote>
+<p>krbtgt是域中特殊的机器用户、CT_SK是密钥</p>
+</blockquote>
 <p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129095532.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129095847.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="2-用（TGT）去TGS服务器换（ST）"><a href="#2-用（TGT）去TGS服务器换（ST）" class="headerlink" title="2.用（TGT）去TGS服务器换（ST）"></a>2.用（TGT）去TGS服务器换（ST）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ad-note">客户端使用重新封装的TGT，向TGS服务器请求ST。ST中上半部分使用CT_SK加密，客户端可以进行解密。<br><br>server hash是指目标服务器的hash，**是客户端真正想要访问的服务器的hash**<br></code></pre></td></tr></table></figure>
-
+<h4 id="2-用（TGT）去TGS服务器换（ST）"><a href="#2-用（TGT）去TGS服务器换（ST）" class="headerlink" title="2.用（TGT）去TGS服务器换（ST）"></a>2.用（TGT）去TGS服务器换（ST）</h4><blockquote>
+<p>客户端使用重新封装的TGT，向TGS服务器请求ST。ST中上半部分使用CT_SK加密，客户端可以进行解密。</p>
+</blockquote>
+<blockquote>
+<p>server hash是指目标服务器的hash，<strong>是客户端真正想要访问的服务器的hash</strong></p>
+</blockquote>
 <p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129100734.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129100813.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="3-用（ST）访问服务"><a href="#3-用（ST）访问服务" class="headerlink" title="3.用（ST）访问服务"></a>3.用（ST）访问服务</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ad-note">1. 客户端用CT_SK重新加密ST<br>2. 发送的目标服务器，服务器用自己的hash值进行解密验证<br>3. 判断是否可以访问访问<br></code></pre></td></tr></table></figure>
+<h4 id="3-用（ST）访问服务"><a href="#3-用（ST）访问服务" class="headerlink" title="3.用（ST）访问服务"></a>3.用（ST）访问服务</h4><blockquote>
+<ol>
+<li>客户端用CT_SK重新加密ST</li>
+<li>发送的目标服务器，服务器用自己的hash值进行解密验证</li>
+<li>判断是否可以访问访问</li>
+</ol>
+</blockquote>
 <p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129102015.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129102130.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/11/29/Kerberos/Pasted%20image%2020231129102143.png" srcset="/img/loading.gif" lazyload></p>
@@ -374,12 +407,6 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2023/11/29/test/" title="test">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">test</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
